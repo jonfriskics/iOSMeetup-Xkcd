@@ -1,0 +1,399 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ABB472A419736B7000F9405C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB472A319736B7000F9405C /* AppDelegate.swift */; };
+		ABB472AB19736B7000F9405C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABB472AA19736B7000F9405C /* Images.xcassets */; };
+		ABB472B719736B7000F9405C /* XkcdSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB472B619736B7000F9405C /* XkcdSwiftTests.swift */; };
+		ABB472C119736BC800F9405C /* ComicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB472C019736BC800F9405C /* ComicsTableViewController.swift */; };
+		ABB472C319736BD400F9405C /* ComicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB472C219736BD400F9405C /* ComicViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ABB472B119736B7000F9405C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABB4729619736B6F00F9405C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABB4729D19736B6F00F9405C;
+			remoteInfo = XkcdSwift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		ABB4729E19736B6F00F9405C /* XkcdSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XkcdSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABB472A219736B7000F9405C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABB472A319736B7000F9405C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ABB472AA19736B7000F9405C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		ABB472B019736B7000F9405C /* XkcdSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XkcdSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABB472B519736B7000F9405C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABB472B619736B7000F9405C /* XkcdSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XkcdSwiftTests.swift; sourceTree = "<group>"; };
+		ABB472C019736BC800F9405C /* ComicsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicsTableViewController.swift; sourceTree = "<group>"; };
+		ABB472C219736BD400F9405C /* ComicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ABB4729B19736B6F00F9405C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABB472AD19736B7000F9405C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ABB4729519736B6F00F9405C = {
+			isa = PBXGroup;
+			children = (
+				ABB472A019736B6F00F9405C /* XkcdSwift */,
+				ABB472B319736B7000F9405C /* XkcdSwiftTests */,
+				ABB4729F19736B6F00F9405C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ABB4729F19736B6F00F9405C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ABB4729E19736B6F00F9405C /* XkcdSwift.app */,
+				ABB472B019736B7000F9405C /* XkcdSwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ABB472A019736B6F00F9405C /* XkcdSwift */ = {
+			isa = PBXGroup;
+			children = (
+				ABB472A319736B7000F9405C /* AppDelegate.swift */,
+				ABB472C019736BC800F9405C /* ComicsTableViewController.swift */,
+				ABB472C219736BD400F9405C /* ComicViewController.swift */,
+				ABB472AA19736B7000F9405C /* Images.xcassets */,
+				ABB472A119736B6F00F9405C /* Supporting Files */,
+			);
+			path = XkcdSwift;
+			sourceTree = "<group>";
+		};
+		ABB472A119736B6F00F9405C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABB472A219736B7000F9405C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ABB472B319736B7000F9405C /* XkcdSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				ABB472B619736B7000F9405C /* XkcdSwiftTests.swift */,
+				ABB472B419736B7000F9405C /* Supporting Files */,
+			);
+			path = XkcdSwiftTests;
+			sourceTree = "<group>";
+		};
+		ABB472B419736B7000F9405C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABB472B519736B7000F9405C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ABB4729D19736B6F00F9405C /* XkcdSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABB472BA19736B7000F9405C /* Build configuration list for PBXNativeTarget "XkcdSwift" */;
+			buildPhases = (
+				ABB4729A19736B6F00F9405C /* Sources */,
+				ABB4729B19736B6F00F9405C /* Frameworks */,
+				ABB4729C19736B6F00F9405C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XkcdSwift;
+			productName = XkcdSwift;
+			productReference = ABB4729E19736B6F00F9405C /* XkcdSwift.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ABB472AF19736B7000F9405C /* XkcdSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABB472BD19736B7000F9405C /* Build configuration list for PBXNativeTarget "XkcdSwiftTests" */;
+			buildPhases = (
+				ABB472AC19736B7000F9405C /* Sources */,
+				ABB472AD19736B7000F9405C /* Frameworks */,
+				ABB472AE19736B7000F9405C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ABB472B219736B7000F9405C /* PBXTargetDependency */,
+			);
+			name = XkcdSwiftTests;
+			productName = XkcdSwiftTests;
+			productReference = ABB472B019736B7000F9405C /* XkcdSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ABB4729619736B6F00F9405C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Code School";
+				TargetAttributes = {
+					ABB4729D19736B6F00F9405C = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					ABB472AF19736B7000F9405C = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = ABB4729D19736B6F00F9405C;
+					};
+				};
+			};
+			buildConfigurationList = ABB4729919736B6F00F9405C /* Build configuration list for PBXProject "XkcdSwift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ABB4729519736B6F00F9405C;
+			productRefGroup = ABB4729F19736B6F00F9405C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ABB4729D19736B6F00F9405C /* XkcdSwift */,
+				ABB472AF19736B7000F9405C /* XkcdSwiftTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ABB4729C19736B6F00F9405C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABB472AB19736B7000F9405C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABB472AE19736B7000F9405C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ABB4729A19736B6F00F9405C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABB472A419736B7000F9405C /* AppDelegate.swift in Sources */,
+				ABB472C119736BC800F9405C /* ComicsTableViewController.swift in Sources */,
+				ABB472C319736BD400F9405C /* ComicViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABB472AC19736B7000F9405C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABB472B719736B7000F9405C /* XkcdSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ABB472B219736B7000F9405C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABB4729D19736B6F00F9405C /* XkcdSwift */;
+			targetProxy = ABB472B119736B7000F9405C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		ABB472B819736B7000F9405C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ABB472B919736B7000F9405C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ABB472BB19736B7000F9405C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = XkcdSwift/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		ABB472BC19736B7000F9405C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = XkcdSwift/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		ABB472BE19736B7000F9405C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XkcdSwift.app/XkcdSwift";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = XkcdSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		ABB472BF19736B7000F9405C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XkcdSwift.app/XkcdSwift";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = XkcdSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ABB4729919736B6F00F9405C /* Build configuration list for PBXProject "XkcdSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABB472B819736B7000F9405C /* Debug */,
+				ABB472B919736B7000F9405C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABB472BA19736B7000F9405C /* Build configuration list for PBXNativeTarget "XkcdSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABB472BB19736B7000F9405C /* Debug */,
+				ABB472BC19736B7000F9405C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ABB472BD19736B7000F9405C /* Build configuration list for PBXNativeTarget "XkcdSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABB472BE19736B7000F9405C /* Debug */,
+				ABB472BF19736B7000F9405C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ABB4729619736B6F00F9405C /* Project object */;
+}
