@@ -1,4 +1,4 @@
-# Xkcd demo apps in Objective-C and Swift.
+# Xkcd apps in Objective-C and Swift.
 
 These are two simple example iOS apps - one written in Objective-C and one written in Swift - that I presented at the [Orlando iOS Developer Meetup](http://www.meetup.com/Orlando-iOS-Developer-Group/) on July 17, 2014.
 
