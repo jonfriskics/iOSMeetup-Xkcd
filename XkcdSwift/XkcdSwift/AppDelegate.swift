@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  XkcdSwift
 //
-//  Created by Jon Friskics on 7/13/14.
+//  Created by Jon Friskics on 9/27/14.
 //  Copyright (c) 2014 Code School. All rights reserved.
 //
 
@@ -11,7 +11,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
+    // MARK: ------ Property declarations
+
     var window: UIWindow?
+
+    // MARK: ------ App delegate methods
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         

@@ -2,7 +2,7 @@
 //  ComicsTableViewController.swift
 //  XkcdSwift
 //
-//  Created by Jon Friskics on 7/13/14.
+//  Created by Jon Friskics on 9/27/14.
 //  Copyright (c) 2014 Code School. All rights reserved.
 //
 
@@ -10,17 +10,27 @@ import UIKit
 
 class ComicsTableViewController: UITableViewController {
 
+    // MARK: ------ Property declarations
+
     var session:NSURLSession?
     var dataSource:NSArray?
     
-    init(style: UITableViewStyle) {
+    // MARK: ------ Initializers
+
+    override init(style: UITableViewStyle) {
         super.init(style: style)
         setupDataSource()
     }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibName, bundle: nibBundleOrNil)
     }
+
+    // MARK: ------ Setup methods
 
     func setupDataSource() -> Void {
         session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -33,12 +43,10 @@ class ComicsTableViewController: UITableViewController {
             
             var jsonParsingError:NSError?
             
-            let jsonResponse:NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &jsonParsingError) as NSDictionary
+            let jsonResponse = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &jsonParsingError) as NSDictionary?
             
-            if jsonResponse == nil {
-                println("Error reading json \(jsonParsingError!.localizedDescription)")
-            } else {
-                let rowCount = jsonResponse["num"] as Int
+            if let jsonResp = jsonResponse {
+                let rowCount = jsonResp["num"] as Int
                 
                 var mutableArray = NSMutableArray()
                 
@@ -55,11 +63,15 @@ class ComicsTableViewController: UITableViewController {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.tableView.reloadData()
                 })
+            } else {
+                println("Error reading json \(jsonParsingError!.localizedDescription)")
             }
         })
         
         task.resume()
     }
+
+    // MARK: ------ View Controller lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +95,7 @@ class ComicsTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillLayoutSubviews() {
@@ -92,38 +104,42 @@ class ComicsTableViewController: UITableViewController {
         tableView.frame = view.frame
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+    
+    // MARK: ------ Table view data source
 
-    // #pragma mark - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let ds = dataSource {
             return ds.count
         }
         return 1
     }
 
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("comicCell", forIndexPath: indexPath) as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier("comicCell", forIndexPath: indexPath) as UITableViewCell
         
         if let ds = dataSource {
-            cell.textLabel.text = toString(ds[indexPath.row]!["comicNumber"])
+            if let dict = ds[indexPath.row] as? NSDictionary {
+                cell.textLabel!.text = String(dict["comicNumber"] as Int)
+            }
         }
         
         return cell
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    // MARK: ------ Table view delegate
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         var comicVC = ComicViewController(passedInComic: dataSource![indexPath.row] as NSDictionary)
 
-        navigationController.pushViewController(comicVC, animated: true)
+        navigationController?.pushViewController(comicVC, animated: true)
     }
     
 }

@@ -2,13 +2,15 @@
 //  ComicViewController.swift
 //  XkcdSwift
 //
-//  Created by Jon Friskics on 7/13/14.
+//  Created by Jon Friskics on 9/27/14.
 //  Copyright (c) 2014 Code School. All rights reserved.
 //
 
 import UIKit
 
 class ComicViewController: UIViewController, UIScrollViewDelegate {
+
+    // MARK: ------ Property declarations
 
     var comicToLoad:NSDictionary
     
@@ -18,6 +20,8 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
     var imageViewInScrollView:UIImageView?
     var comicTitle:UILabel?
 
+    // MARK: ------ Initializers
+    
     init(passedInComic: NSDictionary) {
         comicToLoad = passedInComic
         
@@ -25,7 +29,13 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
 
         automaticallyAdjustsScrollViewInsets = false
     }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
+    // MARK: ------ View Controller lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,44 +58,39 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
             sv.maximumZoomScale = 5.0
             sv.backgroundColor = UIColor.lightGrayColor()
             
-            sv.addSubview(imageViewInScrollView)
+            sv.addSubview(imageViewInScrollView!)
         }
 
-        view.addSubview(imageScrollView)
+        view.addSubview(imageScrollView!)
 
         comicTitle = UILabel()
         if let ct = comicTitle {
             ct.textAlignment = NSTextAlignment.Center
         }
 
-        view.addSubview(comicTitle)
+        view.addSubview(comicTitle!)
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
         
-        let comicNumber = comicToLoad["comicNumber"].stringValue
+        let comicNum:Int = comicToLoad["comicNumber"] as Int
+        let comicNumber = String(comicNum)
         let comicURLString = "http://xkcd.com/" + comicNumber + "/info.0.json"
         let comicURL = NSURL(string: comicURLString)
         let comicURLRequest = NSURLRequest(URL: comicURL)
-        
-        println(comicURLRequest)
         
         if let s = session {
             let task:NSURLSessionDataTask = s.dataTaskWithRequest(comicURLRequest, completionHandler: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
                 
                 var jsonParsingError:NSError?
                 
-                var jsonResponse:NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &jsonParsingError) as NSDictionary
+                var jsonResponse:NSDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &jsonParsingError) as NSDictionary?
                 
-                if jsonResponse == nil {
-                    if let error = jsonParsingError {
-                        println("Error reading json " + error.localizedDescription)
-                    }
-                } else {
-                    self.comicInfo = jsonResponse
+                if let jsonResp = jsonResponse {
+                    self.comicInfo = jsonResp
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         if let ci = self.comicInfo {
@@ -97,8 +102,12 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
                     })
                     
                     self.displayComic()
+                } else {
+                    if let error = jsonParsingError {
+                        println("Error reading json " + error.localizedDescription)
+                    }
                 }
-                })
+            })
             
             task.resume()
         }
@@ -117,15 +126,23 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
         comicTitle!.frame = CGRect(x: 0, y: CGRectGetMaxY(imageScrollView!.frame), width: 320, height: 30)
     }
     
+    // MARK: ------ Scroll view delegate methods
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
+        return imageViewInScrollView
+    }
+    
+    // MARK: ------ Helper methods
+    
     func displayComic() {
         dispatch_async(dispatch_get_main_queue(), {
-            self.comicTitle!.text = self.comicInfo!["safe_title"] as String
+            self.comicTitle!.text = self.comicInfo!["safe_title"] as? String
             self.comicTitle!.sizeToFit()
         });
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             let url = NSURL(string: self.comicInfo!["img"] as String)
-
+            
             let data = NSData(contentsOfURL: url)
             
             let img = UIImage(data: data)
@@ -149,18 +166,12 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
             });
         });
     }
-    
+
     func imageLongPressed(sender: UILongPressGestureRecognizer) {
         let altText = comicInfo!["alt"] as String
         let alertController = UIAlertController(title: "", message: altText, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-    
-    // #pragma mark Scroll view delegate methods
-    
-    func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
-        return imageViewInScrollView
-    }
-    
 }
