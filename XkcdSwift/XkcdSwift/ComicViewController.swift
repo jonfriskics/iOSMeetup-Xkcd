@@ -13,12 +13,33 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
     // MARK: ------ Property declarations
 
     var comicToLoad:NSDictionary
-    
-    var session:NSURLSession?
     var comicInfo:NSDictionary?
-    var imageScrollView:UIScrollView?
-    var imageViewInScrollView:UIImageView?
-    var comicTitle:UILabel?
+    
+    // MARK: ------ Lazy Initializers
+
+    lazy var session:NSURLSession? = {
+        return NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    }()
+    
+    lazy var imageScrollView:UIScrollView? = {
+        let sv = UIScrollView()
+        sv.delegate = self
+        sv.maximumZoomScale = 5.0
+        sv.backgroundColor = UIColor.lightGrayColor()
+        return sv
+    }()
+    
+    lazy var imageViewInScrollView:UIImageView? = {
+        let iv = UIImageView()
+        iv.userInteractionEnabled = true
+        return iv
+    }()
+    
+    lazy var comicTitle:UILabel? = {
+        let label = UILabel()
+        label.textAlignment = .Center
+        return label
+    }()
 
     // MARK: ------ Initializers
     
@@ -38,37 +59,21 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         view.backgroundColor = UIColor.whiteColor()
         
         let longPressOnImage = UILongPressGestureRecognizer(target: self, action:"imageLongPressed:")
+        imageViewInScrollView?.addGestureRecognizer(longPressOnImage)
+        
+        imageScrollView?.addSubview(imageViewInScrollView!)
 
-        imageViewInScrollView = UIImageView()
-        if let iv = imageViewInScrollView {
-            iv.userInteractionEnabled = true
-            
-            iv.addGestureRecognizer(longPressOnImage)
+        if let isv = imageScrollView {
+            view.addSubview(isv)
         }
-
-        imageScrollView = UIScrollView()
-        if let sv = imageScrollView {
-            sv.delegate = self
-            sv.maximumZoomScale = 5.0
-            sv.backgroundColor = UIColor.lightGrayColor()
-            
-            sv.addSubview(imageViewInScrollView!)
-        }
-
-        view.addSubview(imageScrollView!)
-
-        comicTitle = UILabel()
+        
         if let ct = comicTitle {
-            ct.textAlignment = NSTextAlignment.Center
+            view.addSubview(ct)
         }
-
-        view.addSubview(comicTitle!)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -116,14 +121,14 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        if(imageViewInScrollView!.frame.size.height > 400) {
-            imageScrollView!.frame = CGRect(x: 0, y: topLayoutGuide.length, width: 320, height: 400)
+        if(imageViewInScrollView?.frame.size.height > 400) {
+            imageScrollView?.frame = CGRect(x: 0, y: topLayoutGuide.length, width: 320, height: 400)
         } else {
-            imageScrollView!.frame = CGRect(x: 0, y: topLayoutGuide.length, width: 320, height: imageViewInScrollView!.frame.size.height)
+            imageScrollView?.frame = CGRect(x: 0, y: topLayoutGuide.length, width: 320, height: imageViewInScrollView!.frame.size.height)
         }
-        imageScrollView!.contentSize = CGSize(width: imageViewInScrollView!.frame.size.width, height: imageViewInScrollView!.frame.size.height)
+        imageScrollView?.contentSize = CGSize(width: imageViewInScrollView!.frame.size.width, height: imageViewInScrollView!.frame.size.height)
             
-        comicTitle!.frame = CGRect(x: 0, y: CGRectGetMaxY(imageScrollView!.frame), width: 320, height: 30)
+        comicTitle?.frame = CGRect(x: 0, y: CGRectGetMaxY(imageScrollView!.frame), width: 320, height: 30)
     }
     
     // MARK: ------ Scroll view delegate methods
@@ -136,8 +141,8 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
     
     func displayComic() {
         dispatch_async(dispatch_get_main_queue(), {
-            self.comicTitle!.text = self.comicInfo!["safe_title"] as? String
-            self.comicTitle!.sizeToFit()
+            self.comicTitle?.text = self.comicInfo!["safe_title"] as? String
+            self.comicTitle?.sizeToFit()
         });
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
@@ -150,8 +155,8 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
             let size = img.size
             
             dispatch_async(dispatch_get_main_queue(), {
-                self.imageViewInScrollView!.image = img
-                self.imageViewInScrollView!.contentMode = UIViewContentMode.ScaleAspectFit
+                self.imageViewInScrollView?.image = img
+                self.imageViewInScrollView?.contentMode = UIViewContentMode.ScaleAspectFit
                 
                 var heightToSet:CGFloat
                 if(size.height > 400) {
@@ -160,7 +165,7 @@ class ComicViewController: UIViewController, UIScrollViewDelegate {
                     heightToSet = size.height;
                 }
                 
-                self.imageViewInScrollView!.frame = CGRect(x: 0, y: 0, width: 320, height: heightToSet);
+                self.imageViewInScrollView?.frame = CGRect(x: 0, y: 0, width: 320, height: heightToSet);
                 
                 self.view.setNeedsLayout()
             });

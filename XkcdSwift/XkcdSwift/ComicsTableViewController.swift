@@ -124,7 +124,7 @@ class ComicsTableViewController: UITableViewController {
         
         if let ds = dataSource {
             if let dict = ds[indexPath.row] as? NSDictionary {
-                cell.textLabel!.text = String(dict["comicNumber"] as Int)
+                cell.textLabel?.text = String(dict["comicNumber"] as Int)
             }
         }
         
